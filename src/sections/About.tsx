@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useLang } from "../context/LangContext";
 import { useTheme } from "../context/ThemeContext";
-import { useInView } from "../hooks/useInViwe";
+import { useInView } from "../hooks/useInView";
 import Reveal from "../components/Reveal";
 import { Building, BadgeCheck, Check } from "../components/icons";
 

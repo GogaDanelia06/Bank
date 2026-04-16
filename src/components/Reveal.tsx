@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useInView } from "../hooks/useInViwe";
+import { useInView } from "../hooks/useInView";
 
 export default function Reveal({ children, delay = 0, className = "" }) {
   const ref = useRef(null);
