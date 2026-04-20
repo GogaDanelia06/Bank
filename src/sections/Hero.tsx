@@ -334,7 +334,7 @@ export default function Hero() {
                             color: text,
                           }}
                         >
-                          BankSphere
+                            BankSphere
                         </div>
                         <div
                           style={{
@@ -507,9 +507,9 @@ export default function Hero() {
                       }}
                     >
                       {[
-                        { label: "Equities", value: "38%" },
-                        { label: "Funds", value: "34%" },
-                        { label: "Cash", value: "28%" },
+                       { label: t.hero.equitiesLabel, value: "38%" },
+                       { label: t.hero.cashLabel, value: "28%" },
+                       { label: t.hero.fundsLabel, value: "34%" },
                       ].map((item, i) => (
                         <div
                           key={i}
@@ -561,8 +561,8 @@ export default function Hero() {
                 }}
               >
                 {[
-                  { title: "Private Advisory", value: "24/7 Access" },
-                  { title: "Protected Capital", value: "AI Secured" },
+                  { title: t.hero.advisoryTitle, value: t.hero.advisoryValue },
+                  { title: t.hero.capitalTitle, value: t.hero.capitalValue },
                 ].map((item, i) => (
                   <div
                     key={i}

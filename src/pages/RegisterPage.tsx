@@ -182,7 +182,7 @@ export default function RegisterPage() {
                 }}
               >
                 <Lock size={14} />
-                Secure Onboarding
+                {t.register.boxHeader}
               </div>
 
               <h1
@@ -302,9 +302,9 @@ export default function RegisterPage() {
               }}
             >
               {[
-                { value: "3 min", label: "Average Setup" },
-                { value: "24/7", label: "Account Access" },
-                { value: "256-bit", label: "Encryption" },
+                { value: "3 min", label: t.register.setupLabel },
+                { value: "256-bit", label: t.register.encryptionLabel },
+                { value: "24/7", label: t.register.accessLabel },
               ].map((item, i) => (
                 <div
                   key={i}
@@ -397,7 +397,7 @@ export default function RegisterPage() {
                     letterSpacing: "-0.03em",
                   }}
                 >
-                  Account Created!
+                  { t.register.created }
                 </h3>
 
                 <p
@@ -408,8 +408,7 @@ export default function RegisterPage() {
                     maxWidth: 420,
                   }}
                 >
-                  Welcome to EverTrust. Your onboarding request has been created
-                  successfully.
+                  { t.register.created2}
                 </p>
               </div>
             ) : (
@@ -464,7 +463,7 @@ export default function RegisterPage() {
                       letterSpacing: "0.08em",
                     }}
                   >
-                    Encrypted
+                    { t.register.encrypted}
                   </div>
                 </div>
 

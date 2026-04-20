@@ -17,21 +17,21 @@ export default function Cards() {
       desc: t.cards.i0desc,
       accent: "#22d3ee",
       glow: "rgba(34,211,238,0.22)",
-      tag: "Premium Access",
+      tag: t.cards.tagPremiumAccess
     },
     {
       title: t.cards.i1title,
       desc: t.cards.i1desc,
       accent: "#fbbf24",
       glow: "rgba(251,191,36,0.22)",
-      tag: "Protected Yield",
+      tag: t.cards.tagProtectedYield,
     },
     {
       title: t.cards.i2title,
       desc: t.cards.i2desc,
       accent: "#8b5cf6",
       glow: "rgba(139,92,246,0.22)",
-      tag: "Global Payments",
+      tag: t.cards.tagGlobalPayments,
     },
   ];
 
@@ -112,7 +112,7 @@ export default function Cards() {
               }}
             >
               <Banknote size={16} />
-              Exclusive Banking Offers
+              {t.cards.exclusiveTitle}
             </div>
 
             <h2
@@ -330,7 +330,7 @@ export default function Cards() {
                             color: "rgba(7,17,31,0.65)",
                           }}
                         >
-                          Premium Client
+                          {t.cards.premiumClient}
                         </div>
                         <Banknote size={22} />
                       </div>
@@ -382,7 +382,8 @@ export default function Cards() {
                         color: item.accent,
                       }}
                     >
-                      Learn more
+                      {t.cards.learnMore}
+                      
                     </div>
 
                     <div

@@ -259,7 +259,7 @@ export default function About() {
                   marginBottom: 10,
                 }}
               >
-                Trusted Foundation
+                {t.about.relationshipText3}
               </div>
               <div
                 style={{
@@ -271,7 +271,7 @@ export default function About() {
                   marginBottom: 8,
                 }}
               >
-                Built for long-term relationships and protected growth.
+                {t.about.relationshipText}
               </div>
               <div
                 style={{
@@ -280,7 +280,7 @@ export default function About() {
                   color: muted,
                 }}
               >
-                Modern infrastructure, human guidance, and premium service working together.
+                {t.about.relationshipText2}
               </div>
             </div>
           </div>

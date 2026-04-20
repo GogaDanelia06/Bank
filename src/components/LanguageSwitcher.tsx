@@ -1,121 +1,122 @@
 import { useEffect, useRef, useState } from "react";
-import { translations } from "../data/translations";
 import { useLang } from "../context/LangContext";
 import { useTheme } from "../context/ThemeContext";
-import { Globe, Check } from "./icons";
 
-const flags = {
-  en: "🇬🇧",
-  de: "🇩🇪",
-  ru: "🇷🇺",
-  es: "🇪🇸",
-  fr: "🇫🇷",
-  it: "🇮🇹",
-};
-
-const langNames = {
-  en: "English",
-  de: "Deutsch",
-  ru: "Русский",
-  es: "Español",
-  fr: "Français",
-  it: "Italiano",
-};
+const languages = [
+  { code: "en", label: "English", flag: "🇬🇧" },
+  { code: "de", label: "Deutsch", flag: "🇩🇪" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "es", label: "Español", flag: "🇪🇸" },
+  { code: "fr", label: "Français", flag: "🇫🇷" },
+  { code: "it", label: "Italiano", flag: "🇮🇹" },
+] as const;
 
 export default function LanguageSwitcher() {
   const { lang, setLang } = useLang();
   const { dark } = useTheme();
   const [open, setOpen] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const current =
+    languages.find((item) => item.code === lang) || languages[0];
 
   useEffect(() => {
-    const h = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) {
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
         setOpen(false);
       }
-    };
+    }
 
-    document.addEventListener("mousedown", h);
-    return () => document.removeEventListener("mousedown", h);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
-    <div ref={ref} style={{ position: "relative" }}>
+    <div ref={ref} className="relative">
       <button
+        type="button"
         onClick={() => setOpen((v) => !v)}
         style={{
-          display: "flex",
+          display: "inline-flex",
           alignItems: "center",
-          gap: 6,
-          padding: "8px 12px",
+          justifyContent: "center",
+          width: 46,
+          height: 46,
           borderRadius: 999,
-          border: `1px solid ${
-            dark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)"
-          }`,
-          background: dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)",
-          color: dark ? "rgba(255,255,255,0.85)" : "rgba(0,0,0,0.7)",
+          background: dark ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.78)",
+          border: dark
+            ? "1px solid rgba(255,255,255,0.10)"
+            : "1px solid rgba(15,23,42,0.10)",
+          backdropFilter: "blur(14px)",
           cursor: "pointer",
-          fontSize: 13,
-          fontWeight: 500,
+          transition: "all 0.2s ease",
+          fontSize: 20,
         }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-1px)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "";
+        }}
+        title={current.label}
       >
-        <Globe size={14} />
-        <span>{flags[lang]}</span>
+        <span>{current.flag}</span>
       </button>
 
       {open && (
         <div
           style={{
             position: "absolute",
+            top: "calc(100% + 10px)",
             right: 0,
-            top: "calc(100% + 8px)",
+            display: "grid",
+            gap: 8,
+            padding: 10,
+            borderRadius: 20,
+            background: dark ? "rgba(7,17,31,0.96)" : "rgba(255,255,255,0.96)",
+            border: dark
+              ? "1px solid rgba(255,255,255,0.10)"
+              : "1px solid rgba(15,23,42,0.10)",
+            backdropFilter: "blur(16px)",
+            boxShadow: dark
+              ? "0 20px 40px rgba(0,0,0,0.35)"
+              : "0 20px 40px rgba(15,23,42,0.12)",
             zIndex: 100,
-            background: dark ? "#1a2235" : "#fff",
-            border: `1px solid ${
-              dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"
-            }`,
-            borderRadius: 16,
-            overflow: "hidden",
-            minWidth: 150,
-            boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
           }}
         >
-          {Object.keys(translations).map((loc) => (
+          {languages.map((item) => (
             <button
-              key={loc}
+              key={item.code}
+              type="button"
               onClick={() => {
-                setLang(loc);
+                setLang(item.code);
                 setOpen(false);
               }}
               style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-                width: "100%",
-                padding: "10px 14px",
+                width: 42,
+                height: 42,
+                borderRadius: 999,
+                border:
+                  item.code === lang
+                    ? "1px solid #22d3ee"
+                    : dark
+                    ? "1px solid rgba(255,255,255,0.08)"
+                    : "1px solid rgba(15,23,42,0.08)",
                 background:
-                  loc === lang
+                  item.code === lang
                     ? dark
-                      ? "rgba(255,255,255,0.08)"
-                      : "rgba(0,0,0,0.06)"
-                    : "transparent",
-                color: dark
-                  ? loc === lang
-                    ? "#fff"
-                    : "rgba(255,255,255,0.6)"
-                  : loc === lang
-                  ? "#000"
-                  : "rgba(0,0,0,0.6)",
-                fontSize: 13,
-                fontWeight: loc === lang ? 600 : 400,
+                      ? "rgba(34,211,238,0.12)"
+                      : "rgba(34,211,238,0.10)"
+                    : dark
+                    ? "rgba(255,255,255,0.04)"
+                    : "rgba(255,255,255,0.82)",
                 cursor: "pointer",
-                border: "none",
-                textAlign: "left",
+                fontSize: 18,
+                transition: "all 0.2s ease",
               }}
+              title={item.label}
             >
-              <span style={{ fontSize: 16 }}>{flags[loc]}</span>
-              <span>{langNames[loc]}</span>
-              {loc === lang && <Check size={13} />}
+              {item.flag}
             </button>
           ))}
         </div>

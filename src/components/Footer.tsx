@@ -2,16 +2,26 @@ import { useLang } from "../context/LangContext";
 import { useTheme } from "../context/ThemeContext";
 import { Orbit, Mail } from "./icons";
 
+
 export default function Footer() {
   const { t } = useLang();
   const { dark } = useTheme();
 
-  const text = "#f8fafc";
-  const muted = dark ? "rgba(255,255,255,0.58)" : "rgba(255,255,255,0.72)";
-  const linkBase = dark ? "rgba(255,255,255,0.58)" : "rgba(255,255,255,0.72)";
+  const text = dark ? "#f8fafc" : "#0f172a";
+  const muted = dark ? "rgba(255,255,255,0.58)" : "rgba(15,23,42,0.68)";
+  const linkBase = dark ? "rgba(255,255,255,0.72)" : "rgba(15,23,42,0.72)";
   const bg = dark
     ? "linear-gradient(180deg, #040b15 0%, #02070f 100%)"
-    : "linear-gradient(180deg, #0f172a 0%, #111c31 100%)";
+    : "linear-gradient(180deg, #f8fbff 0%, #eaf4ff 100%)";
+
+  const borderColor = dark
+    ? "1px solid rgba(255,255,255,0.08)"
+    : "1px solid rgba(15,23,42,0.08)";
+
+  const pillBg = dark ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.72)";
+  const pillBorder = dark
+    ? "1px solid rgba(255,255,255,0.08)"
+    : "1px solid rgba(15,23,42,0.08)";
 
   const handleEnter = (e) => {
     e.currentTarget.style.color = "#67e8f9";
@@ -27,9 +37,9 @@ export default function Footer() {
         position: "relative",
         overflow: "hidden",
         background: bg,
-        color: "#fff",
+        color: text,
         padding: "28px 32px 26px",
-        borderTop: "1px solid rgba(255,255,255,0.08)",
+        borderTop: borderColor,
       }}
     >
       <div
@@ -68,7 +78,7 @@ export default function Footer() {
             alignItems: "center",
             paddingBottom: 22,
             marginBottom: 18,
-            borderBottom: "1px solid rgba(255,255,255,0.08)",
+            borderBottom: borderColor,
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
@@ -77,13 +87,14 @@ export default function Footer() {
                 width: 46,
                 height: 46,
                 borderRadius: 16,
-                background:
-                  "linear-gradient(135deg, rgba(34,211,238,0.18), rgba(251,191,36,0.14))",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: dark
+                  ? "linear-gradient(135deg, rgba(34,211,238,0.18), rgba(251,191,36,0.14))"
+                  : "linear-gradient(135deg, rgba(34,211,238,0.12), rgba(251,191,36,0.10))",
+                border: borderColor,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#67e8f9",
+                color: "#06b6d4",
               }}
             >
               <Orbit size={20} />
@@ -108,7 +119,7 @@ export default function Footer() {
                   lineHeight: 1.6,
                 }}
               >
-                Premium digital banking built for secure growth and long-term trust.
+                {t.footer.tagline}
               </div>
             </div>
           </div>
@@ -129,9 +140,9 @@ export default function Footer() {
                 gap: 10,
                 padding: "11px 14px",
                 borderRadius: 999,
-                border: "1px solid rgba(255,255,255,0.08)",
-                background: "rgba(255,255,255,0.04)",
-                color: "#67e8f9",
+                border: pillBorder,
+                background: pillBg,
+                color: "#06b6d4",
                 fontSize: 13,
                 fontWeight: 600,
               }}
@@ -175,7 +186,15 @@ export default function Footer() {
                   }}
                 >
                   {i > 0 && (
-                    <span style={{ color: "rgba(255,255,255,0.20)" }}>•</span>
+                    <span
+                      style={{
+                        color: dark
+                          ? "rgba(255,255,255,0.20)"
+                          : "rgba(15,23,42,0.18)",
+                      }}
+                    >
+                      •
+                    </span>
                   )}
 
                   <a

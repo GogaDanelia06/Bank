@@ -140,7 +140,7 @@ export default function Header() {
                   color: muted,
                 }}
               >
-                Private Digital Banking
+                { t.nav.subtitle }
               </div>
             </div>
           </button>
@@ -164,13 +164,13 @@ export default function Header() {
               onClick={() => setPage("home")}
               style={navButton(page === "home")}
             >
-              Home
+              { t.nav.home }
             </button>
             <button
               onClick={() => setPage("register")}
               style={navButton(page === "register")}
             >
-              Register
+              { t.nav.register }
             </button>
           </div>
 

@@ -9,10 +9,10 @@ export default function Account() {
   const { dark } = useTheme();
   const { setPage } = usePage();
 
-  const text = dark ? "#f8fafc" : "#ffffff";
-  const muted = dark ? "rgba(255,255,255,0.68)" : "rgba(255,255,255,0.72)";
-  const soft = dark ? "rgba(255,255,255,0.42)" : "rgba(255,255,255,0.50)";
-  const border = "rgba(255,255,255,0.10)";
+  const text = dark ? "#f8fafc" : "#0f172a";
+  const muted = dark ? "rgba(255,255,255,0.68)" : "rgba(15,23,42,0.72)";
+  const soft = dark ? "rgba(255,255,255,0.42)" : "rgba(15,23,42,0.48)";
+  const border = dark ? "rgba(255,255,255,0.10)" : "rgba(15,23,42,0.10)";
 
   return (
     <section
@@ -22,8 +22,8 @@ export default function Account() {
         overflow: "hidden",
         background: dark
           ? "radial-gradient(circle at 20% 10%, rgba(34,211,238,0.10), transparent 25%), radial-gradient(circle at 85% 85%, rgba(251,191,36,0.10), transparent 22%), linear-gradient(135deg, #050c16 0%, #0a1424 45%, #10182d 100%)"
-          : "radial-gradient(circle at 20% 10%, rgba(34,211,238,0.12), transparent 25%), radial-gradient(circle at 85% 85%, rgba(251,191,36,0.10), transparent 22%), linear-gradient(135deg, #0f172a 0%, #16233d 45%, #1b2140 100%)",
-        color: "#fff",
+          : "radial-gradient(circle at 20% 10%, rgba(34,211,238,0.10), transparent 25%), radial-gradient(circle at 85% 85%, rgba(251,191,36,0.10), transparent 22%), linear-gradient(135deg, #f8fbff 0%, #edf5ff 45%, #e7f0fb 100%)",
+        color: text,
       }}
     >
       <div
@@ -31,10 +31,12 @@ export default function Account() {
           position: "absolute",
           inset: 0,
           pointerEvents: "none",
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
+          backgroundImage: dark
+            ? "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)"
+            : "linear-gradient(rgba(15,23,42,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.035) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
-          maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.35))",
+          maskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.35))",
         }}
       />
 
@@ -54,9 +56,11 @@ export default function Account() {
                 overflow: "hidden",
                 position: "relative",
                 minHeight: 500,
-                background: "#0f172a",
+                background: dark ? "#0f172a" : "#ffffff",
                 border: `1px solid ${border}`,
-                boxShadow: "0 24px 70px rgba(0,0,0,0.35)",
+                boxShadow: dark
+                  ? "0 24px 70px rgba(0,0,0,0.35)"
+                  : "0 24px 70px rgba(15,23,42,0.10)",
                 display: "flex",
                 alignItems: "flex-end",
               }}
@@ -68,15 +72,16 @@ export default function Account() {
                   backgroundImage: "url('/assets/3.jpeg')",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  opacity: 0.72,
+                  opacity: dark ? 0.72 : 0.9,
                 }}
               />
               <div
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background:
-                    "linear-gradient(to top, rgba(2,6,23,0.84) 0%, rgba(2,6,23,0.20) 48%, rgba(34,211,238,0.08) 100%)",
+                  background: dark
+                    ? "linear-gradient(to top, rgba(2,6,23,0.84) 0%, rgba(2,6,23,0.20) 48%, rgba(34,211,238,0.08) 100%)"
+                    : "linear-gradient(to top, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.16) 48%, rgba(34,211,238,0.06) 100%)",
                 }}
               />
               <div
@@ -89,14 +94,16 @@ export default function Account() {
                   gap: 8,
                   padding: "10px 16px",
                   borderRadius: 999,
-                  background: "rgba(255,255,255,0.10)",
+                  background: dark
+                    ? "rgba(255,255,255,0.10)"
+                    : "rgba(255,255,255,0.72)",
                   backdropFilter: "blur(14px)",
                   border: `1px solid ${border}`,
                   fontSize: 12,
                   fontWeight: 700,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  color: "#e2e8f0",
+                  color: dark ? "#e2e8f0" : "#0f172a",
                 }}
               >
                 <TrendingUp size={14} />
@@ -128,7 +135,9 @@ export default function Account() {
                       style={{
                         borderRadius: 20,
                         padding: "18px 18px 16px",
-                        background: "rgba(255,255,255,0.10)",
+                        background: dark
+                          ? "rgba(255,255,255,0.10)"
+                          : "rgba(255,255,255,0.76)",
                         backdropFilter: "blur(18px)",
                         border: `1px solid ${border}`,
                       }}
@@ -138,7 +147,7 @@ export default function Account() {
                           fontSize: 24,
                           fontWeight: 900,
                           letterSpacing: "-0.04em",
-                          color: i === 0 ? "#67e8f9" : "#fbbf24",
+                          color: i === 0 ? "#06b6d4" : "#f59e0b",
                         }}
                       >
                         {item.value}
@@ -148,7 +157,9 @@ export default function Account() {
                           marginTop: 6,
                           fontSize: 11,
                           fontWeight: 700,
-                          color: "rgba(255,255,255,0.58)",
+                          color: dark
+                            ? "rgba(255,255,255,0.58)"
+                            : "rgba(15,23,42,0.58)",
                           letterSpacing: "0.08em",
                           textTransform: "uppercase",
                           lineHeight: 1.4,
@@ -164,7 +175,9 @@ export default function Account() {
                   style={{
                     borderRadius: 22,
                     padding: "16px 18px",
-                    background: "rgba(255,255,255,0.10)",
+                    background: dark
+                      ? "rgba(255,255,255,0.10)"
+                      : "rgba(255,255,255,0.76)",
                     backdropFilter: "blur(18px)",
                     border: `1px solid ${border}`,
                     display: "flex",
@@ -181,7 +194,7 @@ export default function Account() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      color: "#fbbf24",
+                      color: "#f59e0b",
                       flexShrink: 0,
                     }}
                   >
@@ -192,7 +205,7 @@ export default function Account() {
                       style={{
                         fontSize: 14,
                         fontWeight: 800,
-                        color: "#fff",
+                        color: text,
                         marginBottom: 2,
                       }}
                     >
@@ -201,11 +214,12 @@ export default function Account() {
                     <div
                       style={{
                         fontSize: 12,
-                        color: "rgba(255,255,255,0.56)",
+                        color: muted,
                         lineHeight: 1.5,
                       }}
                     >
-                      Premium day-to-day banking with speed, security, and global flexibility.
+                      Premium day-to-day banking with speed, security, and
+                      global flexibility.
                     </div>
                   </div>
                 </div>
@@ -219,10 +233,13 @@ export default function Account() {
                 borderRadius: 32,
                 padding: "42px 42px 40px",
                 border: `1px solid ${border}`,
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%)",
+                background: dark
+                  ? "linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%)"
+                  : "linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.82) 100%)",
                 backdropFilter: "blur(22px)",
-                boxShadow: "0 26px 80px rgba(0,0,0,0.22)",
+                boxShadow: dark
+                  ? "0 26px 80px rgba(0,0,0,0.22)"
+                  : "0 26px 80px rgba(15,23,42,0.10)",
               }}
             >
               <div
@@ -242,7 +259,7 @@ export default function Account() {
                       fontWeight: 800,
                       letterSpacing: "0.20em",
                       textTransform: "uppercase",
-                      color: "rgba(255,255,255,0.46)",
+                      color: soft,
                       marginBottom: 12,
                     }}
                   >
@@ -270,12 +287,16 @@ export default function Account() {
                     padding: "12px 18px",
                     borderRadius: 999,
                     border: `1px solid ${border}`,
-                    background: "rgba(255,255,255,0.07)",
+                    background: dark
+                      ? "rgba(255,255,255,0.07)"
+                      : "rgba(15,23,42,0.04)",
                     fontSize: 11,
                     fontWeight: 800,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.60)",
+                    color: dark
+                      ? "rgba(255,255,255,0.60)"
+                      : "rgba(15,23,42,0.60)",
                     backdropFilter: "blur(12px)",
                   }}
                 >
@@ -308,17 +329,17 @@ export default function Account() {
                   {
                     val: t.account.s0value,
                     label: t.account.s0label,
-                    accent: "#67e8f9",
+                    accent: "#06b6d4",
                   },
                   {
                     val: t.account.s1value,
                     label: t.account.s1label,
-                    accent: "#fbbf24",
+                    accent: "#f59e0b",
                   },
                   {
                     val: t.account.s2value,
                     label: t.account.s2label,
-                    accent: "#86efac",
+                    accent: "#22c55e",
                   },
                 ].map((s, i) => (
                   <div
@@ -326,7 +347,9 @@ export default function Account() {
                     style={{
                       borderRadius: 24,
                       border: `1px solid ${border}`,
-                      background: "rgba(255,255,255,0.05)",
+                      background: dark
+                        ? "rgba(255,255,255,0.05)"
+                        : "rgba(255,255,255,0.72)",
                       padding: "24px 18px",
                     }}
                   >
@@ -345,7 +368,7 @@ export default function Account() {
                         marginTop: 8,
                         fontSize: 11,
                         fontWeight: 700,
-                        color: "rgba(255,255,255,0.50)",
+                        color: soft,
                         textTransform: "uppercase",
                         letterSpacing: "0.08em",
                         lineHeight: 1.5,
@@ -372,7 +395,9 @@ export default function Account() {
                       alignItems: "center",
                       gap: 16,
                       border: `1px solid ${border}`,
-                      background: "rgba(255,255,255,0.045)",
+                      background: dark
+                        ? "rgba(255,255,255,0.045)"
+                        : "rgba(255,255,255,0.70)",
                       borderRadius: 22,
                       padding: "16px 18px",
                     }}
@@ -392,7 +417,7 @@ export default function Account() {
                         alignItems: "center",
                         justifyContent: "center",
                         color:
-                          i === 0 ? "#67f97d" : i === 1 ? "#fbbf24" : "#86efac",
+                          i === 0 ? "#06b6d4" : i === 1 ? "#f59e0b" : "#22c55e",
                         flexShrink: 0,
                       }}
                     >
@@ -403,7 +428,7 @@ export default function Account() {
                       style={{
                         fontSize: 15,
                         lineHeight: 1.7,
-                        color: "rgba(255,255,255,0.86)",
+                        color: dark ? "rgba(255,255,255,0.86)" : "#0f172a",
                       }}
                     >
                       {feature}
@@ -416,7 +441,9 @@ export default function Account() {
                 style={{
                   borderRadius: 24,
                   padding: "18px 18px 16px",
-                  background: "rgba(255,255,255,0.05)",
+                  background: dark
+                    ? "rgba(255,255,255,0.05)"
+                    : "rgba(255,255,255,0.72)",
                   border: `1px solid ${border}`,
                   marginBottom: 28,
                 }}
@@ -455,7 +482,9 @@ export default function Account() {
                   style={{
                     height: 10,
                     borderRadius: 999,
-                    background: "rgba(255,255,255,0.08)",
+                    background: dark
+                      ? "rgba(255,255,255,0.08)"
+                      : "rgba(15,23,42,0.08)",
                     overflow: "hidden",
                   }}
                 >
@@ -465,7 +494,7 @@ export default function Account() {
                       height: "100%",
                       borderRadius: 999,
                       background:
-                        "linear-gradient(90deg, #22ee36 0%, #3b82f6 45%, #10b981 100%)",
+                        "linear-gradient(90deg, #22c55e 0%, #3b82f6 45%, #10b981 100%)",
                     }}
                   />
                 </div>

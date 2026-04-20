@@ -7,20 +7,11 @@ export default function Partners() {
   const { t } = useLang();
   const { dark } = useTheme();
 
-  const text = dark ? "#f8fafc" : "#ffffff";
-  const muted = dark ? "rgba(255,255,255,0.64)" : "rgba(255,255,255,0.70)";
-  const soft = dark ? "rgba(255,255,255,0.42)" : "rgba(255,255,255,0.46)";
-  const border = "rgba(255,255,255,0.10)";
-  const partnerItems = [
-    "Capital",
-    "Advisory",
-    "Global",
-    "Secure",
-    "Private",
-    "Vault",
-    "Yield",
-    "Trust",
-  ];
+  const text = dark ? "#f8fafc" : "#0f172a";
+  const muted = dark ? "rgba(255,255,255,0.64)" : "rgba(15,23,42,0.70)";
+  const soft = dark ? "rgba(255,255,255,0.42)" : "rgba(15,23,42,0.46)";
+  const border = dark ? "rgba(255,255,255,0.10)" : "rgba(15,23,42,0.10)";
+  const partnerItems = t.partners.partnerItems;
 
   return (
     <section
@@ -28,9 +19,10 @@ export default function Partners() {
         padding: "110px 32px",
         position: "relative",
         overflow: "hidden",
-        background:
-          "radial-gradient(circle at 12% 18%, rgba(34,211,238,0.10), transparent 24%), radial-gradient(circle at 88% 82%, rgba(251,191,36,0.10), transparent 22%), linear-gradient(135deg, #07101b 0%, #0c1625 48%, #101a2d 100%)",
-        color: "#fff",
+        background: dark
+          ? "radial-gradient(circle at 12% 18%, rgba(34,211,238,0.10), transparent 24%), radial-gradient(circle at 88% 82%, rgba(251,191,36,0.10), transparent 22%), linear-gradient(135deg, #07101b 0%, #0c1625 48%, #101a2d 100%)"
+          : "radial-gradient(circle at 12% 18%, rgba(34,211,238,0.10), transparent 24%), radial-gradient(circle at 88% 82%, rgba(251,191,36,0.10), transparent 22%), linear-gradient(135deg, #f8fbff 0%, #edf5ff 48%, #e7f0fb 100%)",
+        color: text,
       }}
     >
       <div
@@ -38,8 +30,9 @@ export default function Partners() {
           position: "absolute",
           inset: 0,
           pointerEvents: "none",
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.024) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.024) 1px, transparent 1px)",
+          backgroundImage: dark
+            ? "linear-gradient(rgba(255,255,255,0.024) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.024) 1px, transparent 1px)"
+            : "linear-gradient(rgba(15,23,42,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.03) 1px, transparent 1px)",
           backgroundSize: "58px 58px",
           maskImage:
             "linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(0,0,0,0.35))",
@@ -85,8 +78,8 @@ export default function Partners() {
                 padding: "10px 18px",
                 borderRadius: 999,
                 border: `1px solid ${border}`,
-                background: "rgba(255,255,255,0.04)",
-                color: "#cbd5e1",
+                background: dark ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.72)",
+                color: dark ? "#cbd5e1" : "#334155",
                 fontSize: 12,
                 fontWeight: 700,
                 letterSpacing: "0.08em",
@@ -122,8 +115,7 @@ export default function Partners() {
                 margin: "0 auto",
               }}
             >
-              Built through trusted collaboration across private banking,
-              infrastructure, global operations, and client experience.
+              { t.partners.description2 }
             </p>
           </div>
         </Reveal>
@@ -143,25 +135,30 @@ export default function Partners() {
                   borderRadius: 24,
                   padding: "22px 20px",
                   border: `1px solid ${border}`,
-                  background:
-                    "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))",
+                  background: dark
+                    ? "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))"
+                    : "linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.72))",
                   backdropFilter: "blur(16px)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
                   gap: 16,
                   transition: "transform 0.25s ease, box-shadow 0.25s ease",
-                  boxShadow: "0 14px 34px rgba(0,0,0,0.16)",
+                  boxShadow: dark
+                    ? "0 14px 34px rgba(0,0,0,0.16)"
+                    : "0 14px 34px rgba(15,23,42,0.08)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-6px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 20px 42px rgba(0,0,0,0.24)";
+                  e.currentTarget.style.boxShadow = dark
+                    ? "0 20px 42px rgba(0,0,0,0.24)"
+                    : "0 20px 42px rgba(15,23,42,0.12)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "";
-                  e.currentTarget.style.boxShadow =
-                    "0 14px 34px rgba(0,0,0,0.16)";
+                  e.currentTarget.style.boxShadow = dark
+                    ? "0 14px 34px rgba(0,0,0,0.16)"
+                    : "0 14px 34px rgba(15,23,42,0.08)";
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
@@ -170,12 +167,12 @@ export default function Partners() {
                       width: 46,
                       height: 46,
                       borderRadius: 16,
-                      background: "rgba(255,255,255,0.08)",
+                      background: dark ? "rgba(255,255,255,0.08)" : "rgba(15,23,42,0.04)",
                       border: `1px solid ${border}`,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      color: i % 2 === 0 ? "#67e8f9" : "#fbbf24",
+                      color: i % 2 === 0 ? "#06b6d4" : "#f59e0b",
                     }}
                   >
                     <Banknote size={22} />
@@ -186,7 +183,7 @@ export default function Partners() {
                       style={{
                         fontSize: 16,
                         fontWeight: 800,
-                        color: "#fff",
+                        color: text,
                         letterSpacing: "-0.02em",
                       }}
                     >
@@ -202,7 +199,7 @@ export default function Partners() {
                         textTransform: "uppercase",
                       }}
                     >
-                      Trusted Network
+                      {t.partners.trusted}
                     </div>
                   </div>
                 </div>
@@ -239,10 +236,13 @@ export default function Partners() {
                 borderRadius: 30,
                 padding: "34px 34px 30px",
                 border: `1px solid ${border}`,
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03))",
+                background: dark
+                  ? "linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03))"
+                  : "linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,255,255,0.76))",
                 backdropFilter: "blur(20px)",
-                boxShadow: "0 22px 56px rgba(0,0,0,0.20)",
+                boxShadow: dark
+                  ? "0 22px 56px rgba(0,0,0,0.20)"
+                  : "0 22px 56px rgba(15,23,42,0.10)",
                 height: "100%",
               }}
             >
@@ -267,8 +267,10 @@ export default function Partners() {
                     justifyContent: "center",
                     fontSize: 30,
                     fontWeight: 900,
-                    color: "#fff",
-                    boxShadow: "0 14px 30px rgba(0,0,0,0.18)",
+                    color: dark ? "#fff" : "#0f172a",
+                    boxShadow: dark
+                      ? "0 14px 30px rgba(0,0,0,0.18)"
+                      : "0 14px 30px rgba(15,23,42,0.08)",
                     flexShrink: 0,
                   }}
                 >
@@ -281,10 +283,10 @@ export default function Partners() {
                       fontSize: 24,
                       fontWeight: 900,
                       letterSpacing: "-0.03em",
-                      color: "#fff",
+                      color: text,
                     }}
                   >
-                    BankSphere
+                    { t.partners.brandName }
                   </div>
                   <div
                     style={{
@@ -308,9 +310,9 @@ export default function Partners() {
                 }}
               >
                 {[
-                  { label: "Regions", value: "26+" },
-                  { label: "Partners", value: "120" },
-                  { label: "Integrations", value: "48" },
+                   { label: t.partners.regionsLabel, value: "26+" },
+                   { label: t.partners.integrationsLabel, value: "48" },
+                   { label: t.partners.partnersLabel, value: "120" },
                 ].map((item, i) => (
                   <div
                     key={i}
@@ -318,7 +320,7 @@ export default function Partners() {
                       borderRadius: 22,
                       padding: "18px 16px",
                       border: `1px solid ${border}`,
-                      background: "rgba(255,255,255,0.04)",
+                      background: dark ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.72)",
                     }}
                   >
                     <div
@@ -326,7 +328,7 @@ export default function Partners() {
                         fontSize: 24,
                         fontWeight: 900,
                         letterSpacing: "-0.04em",
-                        color: i === 0 ? "#67e8f9" : i === 1 ? "#fbbf24" : "#86efac",
+                        color: i === 0 ? "#06b6d4" : i === 1 ? "#f59e0b" : "#22c55e",
                       }}
                     >
                       {item.value}
@@ -355,10 +357,13 @@ export default function Partners() {
                 borderRadius: 30,
                 padding: "34px 34px 30px",
                 border: `1px solid ${border}`,
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03))",
+                background: dark
+                  ? "linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03))"
+                  : "linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,255,255,0.76))",
                 backdropFilter: "blur(20px)",
-                boxShadow: "0 22px 56px rgba(0,0,0,0.20)",
+                boxShadow: dark
+                  ? "0 22px 56px rgba(0,0,0,0.20)"
+                  : "0 22px 56px rgba(15,23,42,0.10)",
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
@@ -370,13 +375,13 @@ export default function Partners() {
                   style={{
                     fontSize: 12,
                     fontWeight: 800,
-                    color: "rgba(255,255,255,0.48)",
+                    color: dark ? "rgba(255,255,255,0.48)" : "rgba(15,23,42,0.48)",
                     textTransform: "uppercase",
                     letterSpacing: "0.10em",
                     marginBottom: 14,
                   }}
                 >
-                  Strategic Collaboration
+                  { t.partners.partnerShipContact}
                 </div>
 
                 <p
@@ -396,7 +401,7 @@ export default function Partners() {
                   borderRadius: 22,
                   padding: "18px 18px",
                   border: `1px solid ${border}`,
-                  background: "rgba(255,255,255,0.05)",
+                  background: dark ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.72)",
                   display: "flex",
                   alignItems: "center",
                   gap: 14,
@@ -411,7 +416,7 @@ export default function Partners() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "#67e8f9",
+                    color: "#06b6d4",
                     flexShrink: 0,
                   }}
                 >
@@ -429,13 +434,13 @@ export default function Partners() {
                       marginBottom: 4,
                     }}
                   >
-                    Partnership Contact
+                  { t.partners.partnersHeader }
                   </div>
                   <div
                     style={{
                       fontSize: 15,
                       fontWeight: 800,
-                      color: "#fff",
+                      color: text,
                       letterSpacing: "-0.01em",
                     }}
                   >
